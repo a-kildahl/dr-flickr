@@ -15,7 +15,7 @@ import { FlickrService } from '../shared/flickr.service';
         query(":enter", [
           style({ opacity: 0, transform: "scaleX(0)" }),
           stagger("30ms", animate("400ms ease-out", style({ opacity: 1, transform: "scaleX(1)" })))
-        ])
+        ], { optional: true })
       ])
     ])
   ]
