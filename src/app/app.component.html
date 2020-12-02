@@ -1,8 +1,23 @@
 <ngx-loading-bar></ngx-loading-bar>
 
-<header>
-    <!-- A toolbar to come -->
-</header>
-<main>
-    <app-gallery searchTerm="cat"></app-gallery>
-</main>
+<mat-drawer-container>
+    <mat-drawer #drawer mode="push" position="end">
+        <div class="sidebar-container">
+            <form (ngSubmit)="searchClicked(drawer, gallery)">
+                <mat-form-field>
+                    <mat-label translate="common.search-term"></mat-label>
+                    <input matInput [(ngModel)]="searchTerm" name="searchTerm">
+                </mat-form-field>
+        
+                <button mat-raised-button color="primary" translate="common.search" type="submit"></button>
+            </form>
+        </div>
+    </mat-drawer>
+
+    <header>
+        <app-toolbar [searchTerm]="searchTerm" [drawer]="drawer"></app-toolbar>
+    </header>
+    <main>
+        <app-gallery #gallery [searchTerm]="searchTerm"></app-gallery>
+    </main>
+</mat-drawer-container>

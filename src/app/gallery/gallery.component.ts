@@ -29,6 +29,11 @@ export class GalleryComponent implements OnInit {
   constructor(private flickrService: FlickrService, private snackbar: MatSnackBar, private translate: TranslateService) {}
 
   ngOnInit() {
+    this.search();
+  }
+
+  public search(): void {
+    this.photos = [];
     this.flickrService.search(this.searchTerm, 1, 100).subscribe({
       next: photos => this.photos = photos.results,
       error: () => this.translate.get("flickr.errors.search").subscribe(translation => this.snackbar.open(translation))
