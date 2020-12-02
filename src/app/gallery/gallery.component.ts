@@ -15,7 +15,7 @@ import { FlickrService } from '../shared/flickr.service';
         query(":enter", [
           style({ opacity: 0, transform: "scaleX(0)" }),
           stagger("30ms", animate("400ms ease-out", style({ opacity: 1, transform: "scaleX(1)" })))
-        ])
+        ], { optional: true })
       ])
     ])
   ]
@@ -29,6 +29,11 @@ export class GalleryComponent implements OnInit {
   constructor(private flickrService: FlickrService, private snackbar: MatSnackBar, private translate: TranslateService) {}
 
   ngOnInit() {
+    this.search();
+  }
+
+  public search(): void {
+    this.photos = [];
     this.flickrService.search(this.searchTerm, 1, 100).subscribe({
       next: photos => this.photos = photos.results,
       error: () => this.translate.get("flickr.errors.search").subscribe(translation => this.snackbar.open(translation))

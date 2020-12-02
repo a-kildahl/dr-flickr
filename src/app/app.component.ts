@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
+import { GalleryComponent } from './gallery/gallery.component';
 import { Photo } from './models/Photo';
-import { FlickrService } from "./shared/flickr.service";
 
 @Component({
   selector: 'app-root',
@@ -10,10 +13,18 @@ import { FlickrService } from "./shared/flickr.service";
 export class AppComponent implements OnInit {
   
   public photos: Photo[] = [];
+  public searchTerm: string = "cat";
 
-  constructor(private flickrService: FlickrService) {}
+  constructor(private title: Title, private translate: TranslateService) {
+    
+  }
 
   ngOnInit() {
-    this.flickrService.search("cat", 1, 100).subscribe(photos => this.photos = photos.results);
+    this.translate.get("common.title").subscribe(translation => this.title.setTitle(translation));
+  }
+
+  public searchClicked(drawer: MatDrawer, gallery: GalleryComponent): void {
+    drawer.close();
+    gallery.search();
   }
 }

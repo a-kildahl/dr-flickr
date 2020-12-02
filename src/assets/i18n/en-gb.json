@@ -1,4 +1,9 @@
 {
+    "common": {
+        "title": "DR - Flickr",
+        "search-term": "Search Tag",
+        "search": "Search"
+    },
     "flickr": {
         "errors": {
             "search": "An error occured while searching Flickr"
