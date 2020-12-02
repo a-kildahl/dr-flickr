@@ -9,6 +9,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PhotoComponent } from './photo/photo.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
         deps: [HttpClient]
       }
     }),
+    InfiniteScrollModule,
     MatTooltipModule,
     MatSnackBarModule,
     MatToolbarModule,

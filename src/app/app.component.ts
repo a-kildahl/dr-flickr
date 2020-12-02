@@ -25,6 +25,6 @@ export class AppComponent implements OnInit {
 
   public searchClicked(drawer: MatDrawer, gallery: GalleryComponent): void {
     drawer.close();
-    gallery.search();
+    gallery.reset();
   }
 }
