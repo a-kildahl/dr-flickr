@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 import { GalleryComponent } from './gallery/gallery.component';
 import { Photo } from './models/Photo';
 
@@ -15,12 +15,12 @@ export class AppComponent implements OnInit {
   public photos: Photo[] = [];
   public searchTerm: string = "cat";
 
-  constructor(private title: Title, private translate: TranslateService) {
+  constructor(private title: Title) {
     
   }
 
   ngOnInit() {
-    this.translate.get("common.title").subscribe(translation => this.title.setTitle(translation));
+    this.title.setTitle(environment.title);
   }
 
   public searchClicked(drawer: MatDrawer, gallery: GalleryComponent): void {
