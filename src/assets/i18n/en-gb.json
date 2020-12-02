@@ -1,1 +1,7 @@
-{}
+{
+    "flickr": {
+        "errors": {
+            "search": "An error occured while searching Flickr"
+        }
+    }
+}

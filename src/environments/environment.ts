@@ -8,7 +8,8 @@ export const environment = {
     apiKey: "7c2605204e14ded6eaa9be023489bf3b",
     endpoints: {
       search: "https://api.flickr.com/services/rest/?method=flickr.photos.search",
-      image: "https://live.staticflickr.com"
+      image: "https://live.staticflickr.com",
+      sourceSite: "https://www.flickr.com/photos"
     }
   }
 };
