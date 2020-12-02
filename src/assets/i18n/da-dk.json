@@ -1,0 +1,15 @@
+{
+    "common": {
+        "search-term": "Søgeterm",
+        "search": "Søg"
+    },
+    "language": {
+        "danish": "Dansk",
+        "english": "Engelsk"
+    },
+    "flickr": {
+        "errors": {
+            "search": "Der skete en fejl da vi forsøgte at søge på Flickr"
+        }
+    }
+}

@@ -1,8 +1,11 @@
 {
     "common": {
-        "title": "DR - Flickr",
         "search-term": "Search Tag",
         "search": "Search"
+    },
+    "language": {
+        "danish": "Danish",
+        "english": "English"
     },
     "flickr": {
         "errors": {

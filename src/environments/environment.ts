@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  title: "DR - Flickr",
   flickr: {
     apiKey: "7c2605204e14ded6eaa9be023489bf3b",
     endpoints: {
