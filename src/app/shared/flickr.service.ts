@@ -29,12 +29,17 @@ export class FlickrService {
       totalPages: response.photos.pages,
       results: response.photos.photo.map(photo => ({
         title: photo.title,
-        url: this.getFlickrPhotoUrl(photo)
+        url: this.getFlickrPhotoUrl(photo),
+        sourcePageUrl: this.getSourcePageUrl(photo)
       }))
     })));
   }
 
   public getFlickrPhotoUrl(photo: FlickrPhoto): string {
     return `${environment.flickr.endpoints.image}/${photo.server}/${photo.id}_${photo.secret}_q.jpg`;
+  }
+
+  public getSourcePageUrl(photo: FlickrPhoto): string {
+    return `${environment.flickr.endpoints.sourceSite}/${photo.owner}/${photo.id}`;
   }
 }
