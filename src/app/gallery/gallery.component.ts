@@ -22,8 +22,11 @@ import { FlickrService } from '../shared/flickr.service';
 })
 export class GalleryComponent implements OnInit {
 
-  @Input() public searchTerm: string = "";
+  private isLoading: boolean = false;
+  private pageSize: number = 100;
+  private currentPage: number = 1;
 
+  @Input() public searchTerm: string = "";
   public photos: Photo[] = [];
 
   constructor(private flickrService: FlickrService, private snackbar: MatSnackBar, private translate: TranslateService) {}
@@ -32,10 +35,26 @@ export class GalleryComponent implements OnInit {
     this.search();
   }
 
-  public search(): void {
+  public reset(): void {
+    this.currentPage = 1;
     this.photos = [];
-    this.flickrService.search(this.searchTerm, 1, 100).subscribe({
-      next: photos => this.photos = photos.results,
+    this.search();
+  }
+
+  public onScroll(): void {
+    if (!this.isLoading) {
+      this.currentPage++;
+      this.search();
+    }
+  }
+
+  private search(): void {
+    this.isLoading = true;
+    this.flickrService.search(this.searchTerm, this.currentPage, this.pageSize).subscribe({
+      next: photos => {
+        this.photos = [... this.photos, ... photos.results];
+        this.isLoading = false;
+      },
       error: () => this.translate.get("flickr.errors.search").subscribe(translation => this.snackbar.open(translation))
     });
   }
